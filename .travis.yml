@@ -1,0 +1,19 @@
+language: minimal
+
+services:
+  - docker
+
+env:
+  - DOCKER_REPO=quay.io/aboutsource/ruby RUBY_VERSION=2.5
+
+script:
+  - docker build -f $RUBY_VERSION/Dockerfile -t $DOCKER_REPO:$RUBY_VERSION $RUBY_VERSION/
+
+before_deploy:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" quay.io
+
+deploy:
+  - provider: script
+    script: docker push $DOCKER_REPO:$RUBY_VERSION
+    on:
+      branch: master
