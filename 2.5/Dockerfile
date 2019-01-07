@@ -39,7 +39,7 @@ RUN set -ex \
   && cd / \
 	&& rm -r /usr/src/ruby \
 	&& gem update --system "$RUBYGEMS_VERSION" \
-	&& gem install bundler --version "$BUNDLER_VERSION" --force --no-rdoc --no-ri \
+	&& gem install bundler --version "$BUNDLER_VERSION" --force --no-document \
 	&& rm -r /root/.gem/
 
 CMD ["irb"]
