@@ -6,6 +6,11 @@ ENV RUBY_DOWNLOAD_SHA256 1cc9d0359a8ea35fc6111ec830d12e60168f3b9b305a3c2578357d3
 ENV RUBYGEMS_VERSION 3.0.1
 ENV BUNDLER_VERSION 1.17.3
 
+ARG BUILD_ID
+
+LABEL ruby.version="$RUBY_VERSION"
+LABEL ruby.build.id="$BUILD_ID"
+
 RUN set -ex \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \

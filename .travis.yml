@@ -7,7 +7,12 @@ env:
   - DOCKER_REPO=quay.io/aboutsource/ruby RUBY_VERSION=2.5
 
 script:
-  - docker build -f $RUBY_VERSION/Dockerfile -t $DOCKER_REPO:$RUBY_VERSION $RUBY_VERSION/
+  - |
+    docker build \
+      --file $RUBY_VERSION/Dockerfile \
+      --tag $DOCKER_REPO:$RUBY_VERSION \
+      --build-arg BUILD_ID=$TRAVIS_BUILD_ID \
+      $RUBY_VERSION/
 
 before_deploy:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" quay.io
