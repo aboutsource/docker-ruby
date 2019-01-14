@@ -14,6 +14,7 @@ LABEL ruby.build.id="$BUILD_ID"
 RUN set -ex \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
+  && apt-get upgrade -y \
   && apt-get install -y --no-install-recommends \
     build-essential \
     ca-certificates \
