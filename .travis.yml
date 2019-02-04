@@ -4,7 +4,8 @@ services:
   - docker
 
 env:
-  - DOCKER_REPO=quay.io/aboutsource/ruby RUBY_VERSION=2.5
+  - RUBY_VERSION=2.5
+  - RUBY_VERSION=2.6
 
 script:
   - |
@@ -15,7 +16,7 @@ script:
       $RUBY_VERSION/
 
 before_deploy:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" quay.io
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY
 
 deploy:
   - provider: script
