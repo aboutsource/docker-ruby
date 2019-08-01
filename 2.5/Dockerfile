@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 
+ENV LANG=en_US.UTF-8
 ENV RUBY_MAJOR 2.5
 ENV RUBY_VERSION 2.5.5
 ENV RUBY_DOWNLOAD_SHA256 9bf6370aaa82c284f193264cc7ca56f202171c32367deceb3599a4f354175d7d
@@ -28,9 +29,11 @@ RUN set -ex \
     libxml2-dev \
     libxslt-dev \
     libyaml-dev \
+    locales \
     tzdata \
     zlib1g-dev \
-  && curl -L "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR}/ruby-$RUBY_VERSION.tar.xz" > ruby.tar.xz\
+  && locale-gen "$LANG" \
+  && curl -L "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR}/ruby-$RUBY_VERSION.tar.xz" > ruby.tar.xz \
 	&& echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.xz" | sha256sum -c - \
   && mkdir -p /usr/src/ruby \
   && tar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1 \
