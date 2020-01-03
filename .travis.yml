@@ -6,6 +6,7 @@ services:
 env:
   - RUBY_VERSION=2.5
   - RUBY_VERSION=2.6
+  - RUBY_VERSION=2.7
 
 script:
   - |
