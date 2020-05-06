@@ -18,10 +18,12 @@ RUN set -ex \
     build-essential \
     ca-certificates \
     curl \
+    git \
     libcurl4-openssl-dev \
     libjemalloc-dev \
     libmagic-dev \
     libmagickwand-dev \
+    libmariadbclient-dev-compat \
     libreadline6-dev \
     libssl-dev \
     libxml2-dev \
